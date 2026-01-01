@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "204853447128",
+    "project_id": "urraan-app",
+    "storage_bucket": "urraan-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:204853447128:android:ed28fa6b0d076cec0acaad",
+        "android_client_info": {
+          "package_name": "urraan.auth.notification.database.analytics.crashlytics"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMMNuiviPXS_yvTUWL_lJ5PXa06QgsyK0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
