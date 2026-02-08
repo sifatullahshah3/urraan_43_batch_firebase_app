@@ -34,13 +34,13 @@ class FirebaseNotificationHandling {
 
       if (token != null) {
         // Use your custom log utility to print the token
-        GeneralPrintLog("FCM_TOKEN_LOG", "Device Token: $token");
+        // GeneralPrintLog("FCM_TOKEN_LOG", "Device Token: $token");
 
         // Step 2: Send this token to your Firestore database or API
         // updateTokenInDatabase(token);
       }
     } catch (e) {
-      GeneralPrintLog("FCM_TOKEN_ERROR", e.toString());
+      // GeneralPrintLog("FCM_TOKEN_ERROR", e.toString());
     }
   }
 
@@ -51,47 +51,45 @@ class FirebaseNotificationHandling {
   ) async {
     String response1 = remote_message!.toMap().toString();
 
-    remote_message.data["noti_type"].toString()
-
     String noti_type = remote_message!.toMap()["data"]["noti_type"].toString();
 
     await Future.delayed(Duration(seconds: count), () {
       if (remote_message.toMap().containsKey("data")) {
-        if (noti_type == NotificationStatus.PROMO_ADDED_NOTIFICATION ||
-            noti_type == NotificationStatus.GENERAL_NOTIFICATION) {
-          String noti_title = remote_message!
-              .toMap()["data"]["noti_title"]
-              .toString();
-          String noti_body = remote_message!
-              .toMap()["data"]["noti_body"]
-              .toString();
-          String image_url = remote_message!
-              .toMap()["data"]["image_url"]
-              .toString();
+        // if (noti_type == NotificationStatus.PROMO_ADDED_NOTIFICATION ||
+        //     noti_type == NotificationStatus.GENERAL_NOTIFICATION) {
+        //   String noti_title = remote_message!
+        //       .toMap()["data"]["noti_title"]
+        //       .toString();
+        //   String noti_body = remote_message!
+        //       .toMap()["data"]["noti_body"]
+        //       .toString();
+        //   String image_url = remote_message!
+        //       .toMap()["data"]["image_url"]
+        //       .toString();
 
-          var ssss = DataNotification()
-            ..key = GeneralBox.getNewKey()
-            ..notify_type = noti_type
-            ..title = noti_title
-            ..image_url = image_url
-            ..description = noti_body
-            ..date_time = DateTime.now();
+        // var ssss = DataNotification()
+        //   ..key = GeneralBox.getNewKey()
+        //   ..notify_type = noti_type
+        //   ..title = noti_title
+        //   ..image_url = image_url
+        //   ..description = noti_body
+        //   ..date_time = DateTime.now();
 
-          // GeneralBox.saveDataNotification(ssss);
+        // GeneralBox.saveDataNotification(ssss);
 
-          showDialog(
-            context: navigatorKey.currentState!.context,
-            builder: (_) {
-              return DialogPromoCode(
-                title: noti_title,
-                body: noti_body,
-                type: noti_type,
-                image_url: image_url,
-              );
-            },
-            barrierDismissible: true,
-          );
-        }
+        // showDialog(
+        //   context: navigatorKey.currentState!.context,
+        //   builder: (_) {
+        //     return DialogPromoCode(
+        //       title: noti_title,
+        //       body: noti_body,
+        //       type: noti_type,
+        //       image_url: image_url,
+        //     );
+        //   },
+        //   barrierDismissible: true,
+        // );
+        // }
       }
     });
   }
