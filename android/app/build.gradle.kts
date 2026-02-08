@@ -4,6 +4,7 @@ plugins {
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id("dev.flutter.flutter-gradle-plugin")
     id ("com.google.gms.google-services")
+    id("com.google.firebase.crashlytics")
 }
 
 android {
@@ -44,7 +45,6 @@ android {
 dependencies {
 
     implementation(platform("com.google.firebase:firebase-bom:32.7.2"))
-
     //firebase analytics
     implementation("com.google.firebase:firebase-analytics")
     //firebase Notification

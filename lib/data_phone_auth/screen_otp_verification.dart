@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:urraan_firebase_app/screen_home.dart';
+import 'package:urraan_firebase_app/data_auth/screen_home.dart';
 
 class OtpVerificationScreen extends StatelessWidget {
   const OtpVerificationScreen({super.key});

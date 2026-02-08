@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:urraan_firebase_app/data_auth/screen_email_auth.dart';
+import 'package:urraan_firebase_app/data_auth/screen_guest.dart';
 import 'package:urraan_firebase_app/data_phone_auth/screen_phone_auth.dart';
-import 'package:urraan_firebase_app/screen_email_auth.dart';
 
 class AuthSelectionScreen extends StatelessWidget {
   const AuthSelectionScreen({super.key});
@@ -56,6 +58,37 @@ class AuthSelectionScreen extends StatelessWidget {
                     builder: (context) => const ScreenEmailAuth(),
                   ),
                 );
+              },
+            ),
+
+            const SizedBox(height: 20),
+
+            _buildAuthButton(
+              context,
+              label: "Continue as Guest",
+              icon: Icons.email_outlined,
+              onPressed: () async {
+                try {
+                  final credential = await FirebaseAuth.instance
+                      .signInAnonymously();
+
+                  if (credential.user != null) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ScreenGuest()),
+                    );
+                  } else {
+                    print("Something went wrong");
+                  }
+                } on FirebaseAuthException catch (e) {
+                  if (e.code == 'weak-password') {
+                    print('The password provided is too weak.');
+                  } else if (e.code == 'email-already-in-use') {
+                    print('The account already exists for that email.');
+                  }
+                } catch (e) {
+                  print(e);
+                }
               },
             ),
 
